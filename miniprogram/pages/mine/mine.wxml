@@ -1,0 +1,21 @@
+<!--pages/sort/sort.wxml-->
+<view>
+我的 页面1 
+</view>
+<view wx:if="{{num > 10}}">大于10</view>
+<view wx:elif="{{num < 10}}">小于10</view>
+<view wx:else>等于10</view>
+
+<block wx:if="{{lan == 'en'}}">
+<view>hello</view>
+<view>world</view>
+</block>
+<block wx:else="{{lan == 'cn'}}">
+<view>你和</view>
+<view>世界</view>
+</block>
+
+<view wx:for="{{arr}}" wx:key="index">{{index}}--{{item}}</view>
+
+<input bindblur="inpHandle" type="text" placeholder="请输入内容"/>
+<button bindtap="testHandle" type="primary">test</button>

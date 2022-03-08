@@ -1,0 +1,28 @@
+<!--pages/add/add.wxml-->
+<view>
+国产剧
+</view>
+
+<view class="list-item" wx:for="{{tvList}}" wx:key="id">
+  <view class="img-bar">
+    <image mode="widthFix" src="{{item.cover.url}}"></image>
+  </view>
+<view class="info-bar"> 
+  <view class="title-text">{{item.title}} </view>
+  <!-- 评分 -->
+  <view class="star-content">
+    <view class="starts" wx:if="{{item.rating}}">
+      <block wx:for="{{5}}" wx:for-item="sItem">
+        <view class="{{index < item.rating.star_count?'star-full':'star-empty'}}"></view>
+      </block>
+    </view>
+    <view wx:else>
+      <text>暂无评分</text>
+    </view>
+  <!-- <view class="star-full"></view>
+  <view class="star-empty"></view> -->
+    <text>{{item.rating.star_count}}</text>
+  </view>
+  <view>{{item.info}}</view>
+</view>
+</view>

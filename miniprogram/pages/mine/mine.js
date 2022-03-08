@@ -1,38 +1,35 @@
-// pages/index/index.js
+// pages/mine/mine.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    str:"hello world123",
-    class1:"box2",
-    num:0
+    str:"",
+    num:0,
+    lan:"en",
+    arr:[1,2,3,4,5,6,7,8,9,0],
+    inpVal:""
   },
-  // 测试点击事件
-  tapHandle(){
-    wx.switchTab({
-      url: '../mine/mine',
-    })
+  inpHandle(e){
+  // console.log(e.detail.value);
+  this.setData({
+    inpVal:e.detail.value
+  })
   },
-  // 累加器
-  addHandle(e){
-    let i = e.currentTarget.dataset.i;
-    i = Number.parseInt(i);
-    // console.log(e.currentTarget.dataset.i);
-    // console.log(this.data.num);
-    this.setData({
-      num:this.data.num + i
-    });
+  testHandle(){
+    console.log(this.data.inpVal);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    
+    // console.log(options);
+    this.setData({
+      str:options.str
+    })
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

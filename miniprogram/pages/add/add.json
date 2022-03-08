@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"添加",
+  "onReachBottomDistance":50,
+  "enablePullDownRefresh":true
+
+}

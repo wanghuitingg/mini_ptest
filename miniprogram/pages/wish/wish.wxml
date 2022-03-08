@@ -1,0 +1,18 @@
+<!--pages/wish/wish.wxml-->
+<view>
+心愿单 页面
+</view>
+
+<input type="text" placeholder="请输入待办事项" bindblur="inpHandle"/>
+<button bindtap="addHandle" type="primary">添加</button>
+<view class="list-item" wx:for="{{todoList}}">
+  <view>
+    {{index + 1}}
+  </view>
+  <view>
+    {{item.title}}
+  </view>
+  <view>
+  <button bindtap="delHandle" data-id="{{item.id}}" type="warn" size="mini">删除</button>
+  </view>
+</view>

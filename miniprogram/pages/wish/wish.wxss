@@ -1,0 +1,10 @@
+/* pages/wish/wish.wxss */
+.list-item{
+  display: flex;
+}
+.list-item view{
+  flex-grow: 1;
+  width: 0;
+  text-align: center;
+  margin-top: 10px;
+}
