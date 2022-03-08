@@ -4,7 +4,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: { 
+  data: {
     tvList:[],
     start:0,
     total:0
