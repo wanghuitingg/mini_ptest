@@ -1,4 +1,5 @@
 // pages/tv_index/tv_index.js
+import {getDomestic} from "../../js/api"
 Page({
 
   /**
@@ -7,12 +8,28 @@ Page({
   data: {
 
   },
+  // 获取热播剧
+  getDomesticData(){
+    getDomestic({
+      strat:0,
+      count:10
+    }).then((res)=>{
+      console.log(res);
+    })
+  },
+  // 获取综艺
+  getTv2(){
 
+  },
+  // 获取英美剧
+  getTv3(){
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getDomesticData();
   },
 
   /**
