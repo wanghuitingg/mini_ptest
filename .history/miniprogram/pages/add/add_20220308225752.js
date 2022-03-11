@@ -32,14 +32,6 @@ Page({
     })
     
   },
-  // 跳转至详情页面
-  goDetail(e){
-    let _id = e.currentTarget.dataset.id;
-    // console.log(_id);
-    wx.navigateTo({
-      url: '../add_detail/add_detail?id='+_id,
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

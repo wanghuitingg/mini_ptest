@@ -3,7 +3,7 @@
 国产剧
 </view>
 
-<view bindtap="goDetail" data-id="{{item.id}}" class="list-item" wx:for="{{tvList}}" wx:key="id">
+<view class="list-item" wx:for="{{tvList}}" wx:key="id">
   <view class="img-bar">
     <image mode="widthFix" src="{{item.cover.url}}"></image>
   </view>

@@ -1,0 +1,3 @@
+<!--pages/add_detail/add_detail.wxml-->
+<text>详情页</text>
+<view>{{title}}</view>

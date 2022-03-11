@@ -4,12 +4,12 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: { 
     tvList:[],
     start:0,
     total:0
   },
-  // 获取剧集列表  
+  // 获取剧集列表
   getData(){
     wx.showLoading({
       title: '加载中',
@@ -31,14 +31,6 @@ Page({
     })
     })
     
-  },
-  // 跳转至详情页面
-  goDetail(e){
-    let _id = e.currentTarget.dataset.id;
-    // console.log(_id);
-    wx.navigateTo({
-      url: '../add_detail/add_detail?id='+_id,
-    })
   },
   /**
    * 生命周期函数--监听页面加载

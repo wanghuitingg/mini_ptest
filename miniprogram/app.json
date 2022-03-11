@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/add/add",
-    "pages/wish/wish"
+    "pages/wish/wish",
+    "pages/add_detail/add_detail",
+    "pages/tv_index/tv_index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -39,4 +41,3 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }
- 
