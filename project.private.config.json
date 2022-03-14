@@ -50,6 +50,13 @@
           "name": "",
           "pathName": "pages/add_detail/add_detail",
           "query": "id=35332289",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/cloud_fun/cloud_fun",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

@@ -1,0 +1,4 @@
+/* pages/cloud_fun/cloud_fun.wxss */
+button{
+  margin-top: 20px;
+}

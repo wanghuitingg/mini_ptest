@@ -1,0 +1,4 @@
+<!--pages/cloud_fun/cloud_fun.wxml-->
+<button type="primary" bindtap="addHandle">添加</button>
+<button type="primary" bindtap="getHandle">获取</button>
+<button type="primary" bindtap="getByHandle">条件查询</button>
