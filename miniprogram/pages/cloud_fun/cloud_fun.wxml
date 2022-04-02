@@ -2,3 +2,5 @@
 <button type="primary" bindtap="addHandle">添加</button>
 <button type="primary" bindtap="getHandle">获取</button>
 <button type="primary" bindtap="getByHandle">条件查询</button>
+<button type="primary" bindtap="editHandle">点击更新</button>
+<button type="warn" bindtap="deleteHandle">删除</button>
