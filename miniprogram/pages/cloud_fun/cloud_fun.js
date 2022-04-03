@@ -92,6 +92,14 @@ Page({
       console.log(res);
     })
   },
+  // 批量更改
+  editManyHandle(){
+    wx.cloud.callFunction({
+      name:"viptest"
+    }).then((res)=>{
+      console.log(res);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
