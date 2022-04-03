@@ -1,6 +1,20 @@
 <!--pages/todolist/todolist.wxml-->
 <view class="title">ToDoList</view>
 <view>
-  <input type="text" focus placeholder="请输入待办事项~" class="input"bindblur="inpHandle"/>
+  <input value="{{inpValue}}" type="text" focus placeholder="请输入待办事项~" class="input"bindblur="inpHandle"/>
   <button type="primary" size="mini" class="btn-add" bindtap="addHandle">添加</button>
+</view>
+
+<view class="list-bar">
+  <view class="list-item" wx:for="{{todoData}}" wx:key="_id">
+    <view>
+      <radio></radio>
+    </view>
+    <view>
+      {{item.title}}
+    </view>
+    <view>
+      <button type="primary" size="mini">完成</button>
+    </view>
+  </view>
 </view>

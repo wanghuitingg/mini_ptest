@@ -1,42 +1,68 @@
+
 // pages/todolist/todolist.js
+let inpVal = "";
+const db = wx.cloud.database();
+const todoList = db.collection("todolist");
+let _skip = 0;
+let _total = 0;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    todolist:[
-      {
-        name:"test",
-        age:"222"
-      }
-    ]
+    todoData: [],
+    inpValue: ""
   },
   // 文本框事件
-  inpHandle(e){
-    this.setData({
-      inpVal:e.detail.value
-    })
+  inpHandle(e) {
+    inpVal = e.detail.value
   },
   // 添加list
-  addHandle(){
-    let timer = new Date;
-    timer = timer.getTime();
-    let _arr = this.data.todolist;
-    _arr.push({
-      name:this.data.inpVal,
-      id:timer
+  addHandle() {
+    wx.showLoading({
+      title: '添加中...',
     })
-    this.setData({
-      name:_arr
+    todoList.add({
+      data: {
+        title: inpVal,
+        isDone: false
+      }
+    }).then((res) => {
+      wx.hideLoading();
+      this.getTodoList();
+      this.setData({
+        inpValue: ""
+      })
     })
   },
-
+  // 获取待办事项
+  getTodoList() {
+    wx.showLoading({
+      title: '获取数据中...',
+    })
+    new Promise((resolve, reject) => {
+      todoList.count().then((res) => {
+        _total = res.total
+        // console.log(res);
+        resolve()
+      })
+    }).then(() => {
+      todoList.limit(12).skip(_skip).get().then((res) => {
+        console.log(res);
+        let _arr = this.data.todoData;
+        this.setData({
+          todoData: [..._arr, ...res.data]
+        })
+        wx.hideLoading();
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getTodoList();
   },
 
   /**
@@ -78,7 +104,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (_total == this.data.todoData.length) {
+      wx.showToast({
+        title: '没有数据啦！',
+        icon:"none"
+      })
+    } else {
+      _skip += 12;
+      this.getTodoList();
+    }
   },
 
   /**
