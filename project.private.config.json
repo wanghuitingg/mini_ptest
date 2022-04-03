@@ -57,6 +57,13 @@
           "name": "",
           "pathName": "pages/cloud_fun/cloud_fun",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/todolist/todolist",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

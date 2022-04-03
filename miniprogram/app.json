@@ -6,7 +6,8 @@
     "pages/wish/wish",
     "pages/add_detail/add_detail",
     "pages/tv_index/tv_index",
-    "pages/cloud_fun/cloud_fun"
+    "pages/cloud_fun/cloud_fun",
+    "pages/todolist/todolist"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
