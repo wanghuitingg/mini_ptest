@@ -1,4 +1,3 @@
-
 // pages/todolist/todolist.js
 let inpVal = "";
 const db = wx.cloud.database();
@@ -6,6 +5,7 @@ const todoList = db.collection("todolist");
 let _skip = 0;
 let _total = 0;
 let _isDone = false;
+let _checkItems = [];
 Page({
 
   /**
@@ -14,6 +14,23 @@ Page({
   data: {
     todoData: [],
     inpValue: ""
+  },
+  // 记录复选框的值
+  checkboxChange(e){
+    console.log(e.detail);
+    _checkItems = e.detail.value
+  },
+  // 标记已完成
+  checkDone(){
+    wx.cloud.callFunction({
+      name:"checkDone",
+      data:{
+        ids:_checkItems
+      }
+    }).then((res)=>{
+      console.log(res);
+      this.searchAll();
+    })
   },
   // 查看已完成项
   searchHandle(){
@@ -44,7 +61,7 @@ Page({
     }).then((res)=>{
       console.log(res);
     })
-    this.getTodoList();
+    this.searchAll();
   },
   // 文本框事件
   inpHandle(e) {
@@ -94,6 +111,14 @@ Page({
         wx.stopPullDownRefresh()
       })
     })
+  },
+  // 删除已完成项
+  deleteHandle(e){
+    let _id = e.currentTarget.dataset.id;
+    todoList.doc(_id).remove().then((res)=>{
+      console.log(res);
+    })
+    this.searchHandle()
   },
   /**
    * 生命周期函数--监听页面加载

@@ -2,25 +2,29 @@
 <view class="title">ToDoList</view>
 
 <view>
-  <input value="{{inpValue}}" type="text" focus placeholder="请输入待办事项~" class="input"bindblur="inpHandle"/>
+  <input value="{{inpValue}}" type="text" focus placeholder="请输入待办事项~" class="input" bindblur="inpHandle" />
   <button type="primary" size="mini" class="btn-add" bindtap="addHandle">添加</button>
 </view>
 <view style="text-align: center;" class="btn-tar">
   <button type="primary" size="mini" bindtap="searchAll">查看未完成</button>
   <button type="primary" size="mini" bindtap="searchHandle">查看已完成</button>
+  <button type="default" size="mini" bindtap="checkDone">标记完成</button>
 </view>
 
 <view class="list-bar">
-  <view class="list-item" wx:for="{{todoData}}" wx:key="_id">
-    <view>
-      <radio></radio>
+  <checkbox-group bindchange="checkboxChange">
+    <view class="list-item" wx:for="{{todoData}}" wx:key="_id">
+      <view>
+        <checkbox value="{{item._id}}"></checkbox>
+      </view>
+      <view>
+        {{item.title}}
+      </view>
+      <view>
+        <button type="warn" size="mini" data-id="{{item._id}}" wx:if="{{item.isDone}}" bindtap="deleteHandle">删除</button>
+        <button type="primary" size="mini" bindtap="doneHandle" data-id="{{item._id}}" wx:else>完成</button>
+      </view>
     </view>
-    <view>
-      {{item.title}}
-    </view>
-    <view>
-      <button type="warn" size="mini" data-id="{{item._id}}" wx:if="{{item.isDone}}">删除</button>
-      <button type="primary" size="mini" bindtap="doneHandle" data-id="{{item._id}}" wx:else>完成</button>
-    </view>
-  </view>
+  </checkbox-group>
+
 </view>
