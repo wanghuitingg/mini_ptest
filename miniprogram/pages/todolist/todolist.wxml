@@ -1,8 +1,13 @@
 <!--pages/todolist/todolist.wxml-->
 <view class="title">ToDoList</view>
+
 <view>
   <input value="{{inpValue}}" type="text" focus placeholder="请输入待办事项~" class="input"bindblur="inpHandle"/>
   <button type="primary" size="mini" class="btn-add" bindtap="addHandle">添加</button>
+</view>
+<view style="text-align: center;" class="btn-tar">
+  <button type="primary" size="mini" bindtap="searchAll">查看未完成</button>
+  <button type="primary" size="mini" bindtap="searchHandle">查看已完成</button>
 </view>
 
 <view class="list-bar">
@@ -14,7 +19,8 @@
       {{item.title}}
     </view>
     <view>
-      <button type="primary" size="mini">完成</button>
+      <button type="warn" size="mini" data-id="{{item._id}}" wx:if="{{item.isDone}}">删除</button>
+      <button type="primary" size="mini" bindtap="doneHandle" data-id="{{item._id}}" wx:else>完成</button>
     </view>
   </view>
 </view>

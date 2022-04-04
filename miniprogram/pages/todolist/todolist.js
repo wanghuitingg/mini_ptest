@@ -5,6 +5,7 @@ const db = wx.cloud.database();
 const todoList = db.collection("todolist");
 let _skip = 0;
 let _total = 0;
+let _isDone = false;
 Page({
 
   /**
@@ -13,6 +14,37 @@ Page({
   data: {
     todoData: [],
     inpValue: ""
+  },
+  // 查看已完成项
+  searchHandle(){
+    _isDone = true;
+    _skip = 0;
+    this.setData({
+      todoData:[]
+    });
+    this.getTodoList();
+  },
+  // 查看未完成项
+  searchAll(){
+    _isDone= false;
+    _skip = 0;
+    this.setData({
+      todoData:[]
+    });
+    this.getTodoList();
+  },
+  // 标记完成
+  doneHandle(e){
+    let _id = e.currentTarget.dataset.id;
+    console.log(e,_id);
+    todoList.doc(_id).update({
+      data:{
+        isDone:true
+      }
+    }).then((res)=>{
+      console.log(res);
+    })
+    this.getTodoList();
   },
   // 文本框事件
   inpHandle(e) {
@@ -42,19 +74,24 @@ Page({
       title: '获取数据中...',
     })
     new Promise((resolve, reject) => {
-      todoList.count().then((res) => {
+      todoList.where({
+        isDone:false
+      }).count().then((res) => {
         _total = res.total
         // console.log(res);
         resolve()
       })
     }).then(() => {
-      todoList.limit(12).skip(_skip).get().then((res) => {
+      todoList.limit(12).skip(_skip).where({
+        isDone:_isDone
+      }).get().then((res) => {
         console.log(res);
         let _arr = this.data.todoData;
         this.setData({
           todoData: [..._arr, ...res.data]
         })
         wx.hideLoading();
+        wx.stopPullDownRefresh()
       })
     })
   },
@@ -97,7 +134,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.searchAll()
   },
 
   /**
