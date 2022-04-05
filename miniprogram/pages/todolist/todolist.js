@@ -20,6 +20,18 @@ Page({
     console.log(e.detail);
     _checkItems = e.detail.value
   },
+  // 标记删除
+  checkDel(){
+    wx.cloud.callFunction({
+      name:"checkDel",
+      data:{
+        ids:_checkItems
+      }
+    }).then((res)=>{
+      console.log(res);
+      this.searchHandle()
+    })
+  },
   // 标记已完成
   checkDone(){
     wx.cloud.callFunction({

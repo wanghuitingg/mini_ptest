@@ -9,6 +9,7 @@
   <button type="primary" size="mini" bindtap="searchAll">查看未完成</button>
   <button type="primary" size="mini" bindtap="searchHandle">查看已完成</button>
   <button type="default" size="mini" bindtap="checkDone">标记完成</button>
+  <button type="warn" size="mini" bindtap="checkDel">标记删除</button>  
 </view>
 
 <view class="list-bar">
