@@ -64,6 +64,13 @@
           "name": "",
           "pathName": "pages/todolist/todolist",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/cloud_file/cloud_file",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

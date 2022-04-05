@@ -1,0 +1,7 @@
+/* pages/cloud_file/cloud_file.wxss */
+/* .btn-add{
+  display: inline-block;
+} */
+.btn-add button{
+  margin: 10px;
+}

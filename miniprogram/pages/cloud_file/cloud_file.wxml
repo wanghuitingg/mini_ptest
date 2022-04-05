@@ -1,0 +1,9 @@
+<!--pages/cloud_file/cloud_file.wxml-->
+<view style="text-align: center;" class="btn-add">
+  <button type="primary" bindtap="chooseImg" size="mini">选择图片</button>
+  <button type="primary" bindtap="uploadImg" size="mini">上传图片</button>
+</view>
+
+<view>
+  <image src="{{img}}"></image>
+</view>
